@@ -6,7 +6,7 @@
 
 ```shell script
 sudo apt-get update
-sudo apt-get install nginx
+sudo apt-get install nginx make
 ```
 添加nginx的配置:
 ```shell script
@@ -106,8 +106,48 @@ source $HOME/.bashrc
 
 ### 启动LCD
 
+下载shinescloudnet的binary:
+
+```shell script
+git clone https://github.com/shinecloudfoundation/shinecloudnet-binary.git
+```
+
+执行`startlcd.sh`来启动lcd
+
 ### 启动sync服务
 
-### 启动浏览器后台
+下载sync服务的代码
+```shell script
+git clone https://github.com/shinecloudfoundation/shinecloudnet-sync.git
+```
 
-### 启动浏览器前段
+编译并启动
+```shell script
+cd $HOME/shinecloudnet-sync
+make build
+./start.sh
+```
+
+### 启动浏览器
+
+下载浏览器代码:
+```shell script
+git clone https://github.com/shinecloudfoundation/explorer.git
+```
+
+#### 启动后端
+
+```shell script
+cd $HOME/explorer/backend
+make build
+./start.sh
+```
+
+#### 启动前端
+
+```shell script
+cd $HOME/explorer/frontend
+yarn install
+yarn build
+./refresh.sh
+```
